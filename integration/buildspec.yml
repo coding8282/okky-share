@@ -4,9 +4,6 @@ phases:
   build:
     commands:
       - mvn clean deploy -Pprod
-  post_build:
-    commands:
-      - echo Build completed on `date`
 
 artifacts:
   files:
