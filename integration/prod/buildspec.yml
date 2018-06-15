@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - mvn clean deploy -Pprod
+      - mvn clean deploy -P prod
 
 artifacts:
   files:
