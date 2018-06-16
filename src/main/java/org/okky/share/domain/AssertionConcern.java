@@ -2,8 +2,6 @@ package org.okky.share.domain;
 
 import org.okky.share.execption.BadArgument;
 
-import java.util.Date;
-
 public interface AssertionConcern {
     static void assertArgEquals(Object obj1, Object obj2, String message) {
         if (!obj1.equals(obj2))
@@ -60,21 +58,6 @@ public interface AssertionConcern {
 
     static void assertArgRange(long value, long minimum, long maximum, String message) {
         if (value < minimum || value > maximum)
-            throw new BadArgument(message);
-    }
-
-    static void assertArgTrue(boolean bool, String message) {
-        if (!bool)
-            throw new BadArgument(message);
-    }
-
-    static void assertArgFalse(boolean bool, String message) {
-        if (bool)
-            throw new BadArgument(message);
-    }
-
-    static void assertArgNotAfter(Date date, Date base, String message) {
-        if (date.after(base))
             throw new BadArgument(message);
     }
 
