@@ -19,10 +19,21 @@ public class JsonUtilTest extends TestMother {
         String json = "{\"name\":\"현수\",\"email\":\"coding8282@gmail.com\",\"description\":\"구직 중입니다. 연락주세요.\",\"skills\":[\"Java\",\"Spring\",\"DDD\"]}";
 
         Person p = JsonUtil.fromJson(json, Person.class);
-        assertEquals("", p.name, "현수");
-        assertEquals("", p.email, "coding8282@gmail.com");
-        assertEquals("", p.description, "구직 중입니다. 연락주세요.");
-        assertThat("", p.skills, contains("Java", "Spring", "DDD"));
+        assertEquals("이름이 다르다.", p.name, "현수");
+        assertEquals("이메일이 다르다.", p.email, "coding8282@gmail.com");
+        assertEquals("설명이 다르다.", p.description, "구직 중입니다. 연락주세요.");
+        assertThat("스킬이 다르다.", p.skills, contains("Java", "Spring", "DDD"));
+    }
+
+    @Test
+    public void fromJson_FQCN버전() {
+        String json = "{\"name\":\"현수\",\"email\":\"coding8282@gmail.com\",\"description\":\"구직 중입니다. 연락주세요.\",\"skills\":[\"Java\",\"Spring\",\"DDD\"]}";
+
+        Person p = (Person) JsonUtil.fromJson(json, "org.okky.share.util.Person");
+        assertEquals("이름이 다르다.", p.name, "현수");
+        assertEquals("이메일이 다르다.", p.email, "coding8282@gmail.com");
+        assertEquals("설명이 다르다.", p.description, "구직 중입니다. 연락주세요.");
+        assertThat("스킬이 다르다.", p.skills, contains("Java", "Spring", "DDD"));
     }
 
     @Test
