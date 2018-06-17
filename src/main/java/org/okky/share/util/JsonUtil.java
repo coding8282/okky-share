@@ -3,13 +3,15 @@ package org.okky.share.util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
+@FieldDefaults(level = PRIVATE, makeFinal = true)
 public class JsonUtil {
-    private static final Gson GSON = new Gson();
-    private static final Gson GSON_PRETTY = new GsonBuilder().setPrettyPrinting().create();
+    static Gson GSON = new Gson();
+    static Gson GSON_PRETTY = new GsonBuilder().setPrettyPrinting().create();
 
     public static <T> T fromJson(String json, Class<T> clazz) {
         return GSON.fromJson(json, clazz);
