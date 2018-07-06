@@ -7,7 +7,7 @@ env:
 phases:
   build:
     commands:
-      - aws s3 cp s3://config-okky-stg/settings.xml /root/.m2/settings.xml
+      - aws s3 cp s3://config-okky-stg/settings.xml /root/.m2/settings.xml --region=ap-northeast-2
       - mvn clean deploy sonar:sonar -P stg -Dsonar.login=$SONAR_LOGIN
 
 artifacts:
